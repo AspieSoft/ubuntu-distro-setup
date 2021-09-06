@@ -1,0 +1,3 @@
+add "$USER ALL=(ALL) NOPASSWD: /usr/bin/apt-get upgrade" and similar to bottom of "sudo visudo" file to allow installing apps without password (make optional)
+
+find a way to run google playstore apps on linux
