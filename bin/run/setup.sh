@@ -132,10 +132,10 @@ runUpdate
 
 
 # install apps
-bash ./scripts/install-apps.sh "$installNemoYN" "$installWineYN" "$installIceYN" "$installRecommendedYN" "$installMCYN" "$installWinePauseYN"
+bash ./bin/run/scripts/install-apps.sh "$installNemoYN" "$installWineYN" "$installIceYN" "$installRecommendedYN" "$installMCYN" "$installWinePauseYN"
 
 # install security apps
-bash ./scripts/install-security.sh
+bash ./bin/run/scripts/install-security.sh
 
 
 # update
