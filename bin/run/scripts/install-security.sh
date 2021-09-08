@@ -52,7 +52,7 @@ loading=$(startLoading "Setting Up Cron Jobs")
   sudo chmod +x /etc/init.d/aspiesoft-clamav-scanner
   sudo ln -s /etc/init.d/aspiesoft-clamav-scanner /etc/rc.d/aspiesoft-clamav-scanner
 
-  bash /etc/aspiesoft-clamav-scanner/start
+  bash /etc/aspiesoft-clamav-scanner/start.sh
 
   endLoading "$loading"
 ) &
