@@ -48,7 +48,7 @@ loading=$(startLoading "Setting Up Cron Jobs")
   sudo mkdir -p /etc/aspiesoft-clamav-scanner
   sudo cp -R -f ./bin/aspiesoft-clamav-scanner/* /etc/aspiesoft-clamav-scanner
 
-  sudo echo -e '#''!/bin/bash\nbash /etc/aspiesoft-clamav-scanner/start\n' | sudo tee /etc/init.d/aspiesoft-clamav-scanner
+  sudo echo -e '#''!/bin/bash\nbash /etc/aspiesoft-clamav-scanner/start.sh\n' | sudo tee /etc/init.d/aspiesoft-clamav-scanner
   sudo chmod +x /etc/init.d/aspiesoft-clamav-scanner
   sudo ln -s /etc/init.d/aspiesoft-clamav-scanner /etc/rc.d/aspiesoft-clamav-scanner
 

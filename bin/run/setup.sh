@@ -65,6 +65,8 @@ if ! [ "$installWineYN" = "n" -o "$installWineYN" = "N" ] ; then
   echo "Some programs like Minecraft might not install in the proper directory, if you install WINE first"
   read -n1 -p "Would you like to Install Minecraft Java (Y/n)? " installMCYN ; echo
   read -n1 -p "Would you like to pause the installer before installing WINE, so you can install other conflicting apps (y/N)? " installWinePauseYN ; echo
+else
+  installWinePauseYN="n"
 fi
 
 read -n1 -p "Would you like to Install ICE (Y/n)? " installIceYN ; echo
