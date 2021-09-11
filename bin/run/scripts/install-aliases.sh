@@ -28,15 +28,16 @@ function endLoading() {
 
 loading=$(startLoading "Installing Custom Aliases")
 (
-  
+
   if sudo grep -q "# AspieSoft Added Aliases" /etc/bash.bashrc ; then
-    sudo sed -r -i -z "s/# AspieSoft Added Aliases - START\n([\r\n]|.)*?\n# AspieSoft Added Aliases - END//m" /etc/default/grub &>/dev/null
+    # todo: fix isue where this is not removed (regex failed)
+    sudo sed -r -i -z "s/# AspieSoft Added Aliases - START\r?\n([\r\n]|.)*?\r?\n# AspieSoft Added Aliases - END//m" /etc/default/grub &>/dev/null
   else
     sudo cp /etc/bash.bashrc /etc/bash.bashrc-backup &>/dev/null
   fi
 
 
-  echo "# AspieSoft Added Aliases - START" | sudo tee -a /etc/bash.bashrc &>/dev/null
+  echo -e "\n# AspieSoft Added Aliases - START\n" | sudo tee -a /etc/bash.bashrc &>/dev/null
 
   sudo cat ./bin/other/install-aliases.sh | sudo tee -a /etc/bash.bashrc &>/dev/null
 
@@ -44,7 +45,7 @@ loading=$(startLoading "Installing Custom Aliases")
     sudo cat ./bin/other/install-yum-aliases.sh | sudo tee -a /etc/bash.bashrc &>/dev/null
   fi
 
-  echo "# AspieSoft Added Aliases - END" | sudo tee -a /etc/bash.bashrc &>/dev/null
+  echo -e "\n# AspieSoft Added Aliases - END\n" | sudo tee -a /etc/bash.bashrc &>/dev/null
 
 
   endLoading "$loading"

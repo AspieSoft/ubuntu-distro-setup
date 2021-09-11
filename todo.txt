@@ -2,7 +2,4 @@ add "$USER ALL=(ALL) NOPASSWD: /usr/bin/apt-get upgrade" and similar to bottom o
 
 find a way to run google playstore apps on linux
 
-fix issue with outputs loggins
-
-fix issue where minecraft gets installed and ignores user option
-
+fix issue with outputs logging
