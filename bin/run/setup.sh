@@ -57,6 +57,7 @@ echo -e "$inputTime\n"
 
 
 # ask user about other installs
+read -n1 -p "Would you like to make yum an alias of apt (Y/n)? " addYumAlias ; echo
 read -n1 -p "Would you like to fix potential dual monitor issues with nvidia (Y/n)? " fixDualMonitorYN ; echo
 read -n1 -p "Would you like to Install The Nemo File Manager (Y/n)? " installNemoYN ; echo
 
@@ -66,6 +67,7 @@ if ! [ "$installWineYN" = "n" -o "$installWineYN" = "N" ] ; then
   read -n1 -p "Would you like to Install Minecraft Java (Y/n)? " installMCYN ; echo
   read -n1 -p "Would you like to pause the installer before installing WINE, so you can install other conflicting apps (y/N)? " installWinePauseYN ; echo
 else
+  installMCYN="n"
   installWinePauseYN="n"
 fi
 
@@ -111,8 +113,8 @@ loading=$(startLoading "Editing Grub Menu")
 (
   cp -n /etc/default/grub /etc/default/grub-backup
 
-  sudo sed -r -i 's/^GRUB_TIMEOUT_STYLE=(.*)$/GRUB_TIMEOUT_STYLE=menu/gm' /etc/default/grub
-  sudo sed -r -i "s/^GRUB_TIMEOUT=(.*)\$/GRUB_TIMEOUT=$inputTime/gm" /etc/default/grub
+  sudo sed -r -i 's/^GRUB_TIMEOUT_STYLE=(.*)$/GRUB_TIMEOUT_STYLE=menu/m' /etc/default/grub
+  sudo sed -r -i "s/^GRUB_TIMEOUT=(.*)\$/GRUB_TIMEOUT=$inputTime/m" /etc/default/grub
 
   sudo update-grub
 
@@ -144,6 +146,14 @@ bash ./bin/run/scripts/install-security.sh
 runUpdate "true"
 
 
+# install aliases
+bash ./bin/run/scripts/install-aliases.sh "$addYumAlias"
+
+
+# update
+runUpdate "true"
+
+
 # clean ubuntu
 loading=$(startLoading "Cleaning Up")
 (
@@ -153,6 +163,7 @@ loading=$(startLoading "Cleaning Up")
 
   # unset variables
   unset inputTime
+  unset addYumAlias
   unset fixDualMonitorYN
   unset installNemoYN
   unset installWineYN

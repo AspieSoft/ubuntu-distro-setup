@@ -52,6 +52,15 @@ loading=$(startLoading "Disabling time wasting startup programs")
 
   sudo systemctl disable whoopsie.service &>/dev/null # ubuntu error reporting
 
+  # todo: see if "cups.service" can be delayed
+  # todo: see if "snapd.service" can be delayed (takes 2 seconds at boot)
+  # todo: see if "plymouth-quit-wait.service" can be delayed or disabled (takes 7 seconds at boot)
+  # todo: see if "dev-sdc3.device" can be delayed or disabled (takes 12 seconds at boot)
+
+  #sudo nano /etc/default/grub
+  #GRUB_CMDLINE_LINUX_DEFAULT="noplymouth video=SVIDEO-1:d"
+  #sudo update-grub
+
   endLoading "$loading"
 ) &
 runLoading "$loading"

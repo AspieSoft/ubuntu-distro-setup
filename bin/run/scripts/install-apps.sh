@@ -77,7 +77,7 @@ if ! [ "$installMCYN" = "n" -o "$installMCYN" = "N" ] ; then
   ) &
   runLoading "$loading"
 fi
-
+nemo
 if [ "$installWinePauseYN" = "y" -o "$installWinePauseYN" = "Y" ] ; then
   echo "Install any software that may conflict with WINE"
   read -n1 -r -s -p "Press any key to continue..." ; echo
