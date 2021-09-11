@@ -98,7 +98,7 @@ fi
 if ! [ "$installIceYN" = "n" -o "$installIceYN" = "N" ] ; then
   loading=$(startLoading "Installing ICE ICE Baby")
   (
-  sudo dpkg -i ./bin/ice_5.2.7_all.deb &>/dev/null
+  sudo dpkg -i ./bin/other/ice_5.2.7_all.deb &>/dev/null
 
   endLoading "$loading"
   ) &
