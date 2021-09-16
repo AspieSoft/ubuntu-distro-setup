@@ -185,6 +185,15 @@ loading=$(startLoading "Installing VSCode")
 runLoading "$loading"
 
 
+loading=$(startLoading "Installing Eclipse")
+(
+  sudo snap install --classic eclipse &>/dev/null
+
+  endLoading "$loading"
+) &
+runLoading "$loading"
+
+
 loading=$(startLoading "Installing Blender")
 (
   sudo snap install --classic blender &>/dev/null
