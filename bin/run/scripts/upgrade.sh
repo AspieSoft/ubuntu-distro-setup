@@ -65,4 +65,20 @@ loading=$(startLoading "Disabling time wasting startup programs")
 ) &
 runLoading "$loading"
 
+
+loading=$(startLoading "Improving multitasking preformance")
+(
+  sudo cp ./bin/other/set-ram-limit.sh /etc/init.d/set-ram-limit
+  sudo chmod +x /etc/init.d/set-ram-limit
+
+  sudo update-rc.d set-ram-limit defaults
+  sudo service set-ram-limit start
+
+  bash ./bin/other/set-ram-limit.sh
+
+  endLoading "$loading"
+) &
+runLoading "$loading"
+
+
 unset loading
